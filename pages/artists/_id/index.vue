@@ -69,7 +69,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 .artist-bg {
     background-image: url('https://firebasestorage.googleapis.com/v0/b/photofirebase-2982a.appspot.com/o/eu.jpeg?alt=media&token=37eb4708-fb72-4d38-a8b4-9f7dfe74c713');
     background-position: center;
