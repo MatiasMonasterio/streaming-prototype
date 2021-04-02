@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div>
+    <!-- <div>
       <Logo />
       <h1 class="title">
         streaming-prototype
@@ -23,25 +23,36 @@
           GitHub
         </a>
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 
-<script lang="ts">
-import Vue from 'vue'
+<script>
+import { mapActions } from 'vuex'
 
-export default Vue.extend({})
+export default {
+  name: 'Home',
+  methods: {
+    ...mapActions(['bgTransparentToogleAction']),
+  },
+  mounted() {
+    this.bgTransparentToogleAction( false )
+  },
+  beforeDestroy() {
+    this.bgTransparentToogleAction( true )
+  }
+}
 </script>
 
 <style>
-.container {
+/* .container {
   margin: 0 auto;
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
-}
+} */
 
 .title {
   font-family:

@@ -1,9 +1,15 @@
 export default {
+  server: {
+    port: 8000,
+    host: '0.0.0.0'
+  },
   // Target: https://go.nuxtjs.dev/config-target
-  target: 'static',
+  mode: 'universal',
+  // target: 'static',
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
+    htmlAttrs: { lang: 'es', amp: true },
     title: 'streaming-prototype',
     meta: [
       { charset: 'utf-8' },

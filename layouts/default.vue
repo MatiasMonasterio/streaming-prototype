@@ -1,10 +1,60 @@
 <template>
   <div>
-    <Nuxt />
+    <div :class="{ 'main-content': bgNoIndex }">
+      <Navbar />
+      <div class="position-fixed top-0 w-100 text-light h-100" id="mainContainer">
+          <Nuxt />
+      </div>
+      <Player />
+    </div>
   </div>
 </template>
 
+<script>
+import { mapState } from 'vuex'
+import Navbar from '@/components/Navbar'
+import Player from '@/components/Player'
+
+export default {
+  name: 'Layout',
+  components: {
+    Player,
+    Navbar
+  },
+  methods: {
+    eventsResize() {
+      window.addEventListener('resize', () => {
+        this.defineMarginContainer()
+      })
+    },
+    defineMarginContainer() {
+      const navButon = document.querySelector('#navButton')
+      const mainContainer = document.querySelector('#mainContainer')
+      const playerContent = document.querySelector('#player')
+
+      const marginTop = navButon?.clientHeight
+      const marginBottom = playerContent?.clientHeight
+      const viewportHieght = window.innerHeight
+
+      mainContainer.style.marginTop = `${ marginTop }px`
+      mainContainer.style.marginBottom = `${ marginBottom }px`
+      mainContainer.style.maxHeight = `${ viewportHieght - (marginTop + marginBottom) }px`
+    }
+  },
+  computed: {
+    ...mapState(['bgNoIndex'])
+  },
+  beforeMount() {
+    this.defineMarginContainer()
+  },
+  mounted() {
+    this.eventsResize();
+  }
+}
+</script>
+
 <style>
+
 html {
   font-family:
     'Source Sans Pro',
@@ -58,5 +108,45 @@ html {
 .button--grey:hover {
   color: #fff;
   background-color: #35495e;
+}
+
+body {
+  background-color: #1b1b1b;
+  background-image: url('../static/img/logo.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 10rem;
+  width: 100%;
+  height: 100vh;
+}
+
+.top-0 {
+    top: 0;
+}
+.z-index {
+    z-index: 1;
+}
+.no-index {
+    z-index: -1;
+}
+.z-index-2{
+  z-index: 2;
+}
+
+.main-content {
+  background-color: rgba(27, 27, 27, .9);
+  width: 100%;
+  height: 100vh;
+}
+
+.visual {
+  background-image: url('../static/img/visuals/ezgif.com-gif-maker(2).webp');
+  background-size: cover;
+}
+
+@media (min-width: 1400px) {
+  .container {
+    max-width: 1400px;
+  }
 }
 </style>
