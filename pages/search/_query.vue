@@ -1,12 +1,13 @@
 <template>
     <div class="h-100 overflow-hidden">
         <div class="container row mx-auto mb-sm-4 mb-3">
-            <form class="col-sm-6 px-0" @submit="sendParam">
+            <form class="col-sm-6 px-0" @submit="preventsubmit">
                 <input type="search" name="search"
                 class="w-100 bg-transparent text-light input-search"
                 placeholder="Buscar..."
                 autocomplete="off"
                 v-model="inputSearch"
+                @keyup="sendParam"
                 id="search">
             </form>
         </div>
@@ -155,9 +156,8 @@ export default {
         getParam() {
             this.inputSearch = this.$route.params.query
         },
-        sendParam(e) {
-            e.preventDefault()
-            this.$router.replace({params:  {query: this.inputSearch}})
+        sendParam() {
+            window.history.replaceState(null, null, `/search/${this.inputSearch}`)
         },
         setGroup( group ) {
             this.groupToShow = group
@@ -169,6 +169,9 @@ export default {
         setButton( group ) {
             if( this.groupToShow === group ) return 'btn-dark'
             else return 'btn-outline-dark text-light'
+        },
+        preventsubmit(e) {
+            e.preventDefault()
         }
     },
     mounted() {
