@@ -43,7 +43,9 @@ export default {
     // https://go.nuxtjs.dev/bootstrap
     'bootstrap-vue/nuxt',
     // https://go.nuxtjs.dev/pwa
-    '@nuxtjs/pwa'
+    '@nuxtjs/pwa',
+    // https://github.com/nuxt-community/style-resources-module/
+    '@nuxtjs/style-resources',
   ],
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
