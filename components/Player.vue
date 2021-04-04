@@ -30,7 +30,7 @@
             </div>
         </div>
 
-        <audio src="/audio/test-audio.mp3" type="audio/mpeg" controls loop id="audio"
+        <audio src="/audio/test-audio.mp3" type="audio/mpeg" controls loop id="audio" preload="none"
         @play="playerToggle" @pause="playerToggle" class="d-none">
         </audio>
     </div>
