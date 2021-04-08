@@ -53,7 +53,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 
 html {
   font-family:
@@ -110,7 +110,10 @@ html {
   background-color: #35495e;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Arimo:wght@400;500;600;700&display=swap');
+
 body {
+  font-family: 'Arimo', sans-serif;
   background-color: #1b1b1b;
   background-image: url('../static/img/logo.svg');
   background-repeat: no-repeat;
@@ -140,7 +143,7 @@ body {
 }
 
 .visual {
-  background-image: url('../static/img/visuals/ezgif.com-gif-maker(2).webp');
+  background-image: url('../static/img/visuals/ezgif.com-gif-maker2020.2.webp');
   background-size: cover;
 }
 
