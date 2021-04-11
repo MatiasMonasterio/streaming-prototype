@@ -11,13 +11,21 @@
             </span>
         </div>
 
-        <div class="container row mx-auto mb-4">
+        <div class="container row flex-column mx-auto mb-5">
             <div class="col-md-7 px-0">
-                <p class="artist-description">
+                <p class="artist-description mb-2">
                     Lorem ipsum dolor sit, amet consectetur adipisicing elit. Culpa molestiae 
                     reiciendis error ducimus nemo quam eaque minus vel accusamus similique! Sed 
                     quisquam perferendis earum suscipit id! Tempora incidunt veniam quae!
                 </p>
+            </div>
+
+            <div>
+                <Facebook height="1.1rem" class="mr-1" url="https://www.facebook.com/matias.m.monasterio/"/>
+                <Instagram height="1.1rem" class="mr-1" url="https://www.instagram.com/matiasmonas/"/>
+                <Mixcloud height="1rem" class="mr-1" url="https://www.mixcloud.com/matias-m-monasterio/"/>
+                <Soundcloud height=".85rem" class="mr-1" url="https://soundcloud.com/matias-m-monasterio"/>
+                <Youtube height="1rem" class="mr-1" url="https://www.youtube.com/channel/UCEK6kiMqrSp6uSdwYMffUzQ"/>
             </div>
         </div>
 
@@ -35,24 +43,33 @@
                 </div>
             
 
-                <NuxtLink to="/calendars/1" class="d-flex align-items-center text-decoration-none">
-                    <div class="border border-dark d-inline-block text-light">
-                        <div class="bg-dark px-3"><small>Feb</small></div>
-                        <div class="text-center"><small>10</small></div>
-                    </div>
-                    <div class="ml-2">
-                        <h6 class="mb-0 text-light">Techno</h6>
-                        <p class="mb-0 text-secondary">20:00 - 22:00</p>
-                    </div>
-                </NuxtLink>
+                <Calendar id="1" genre="Techno" 
+                start="20:00" end="22:00" day="10" 
+                month="Feb" />
             </div>
         </div>
     </div>
 </template>
 
 <script>
+import Calendar from '@/components/Calendar'
+import Facebook from '@/components/icons/Facebook'
+import Instagram from '@/components/icons/Instagram'
+import Mixcloud from '@/components/icons/Mixcloud'
+import Soundcloud from '@/components/icons/Soundcloud'
+import Youtube from '@/components/icons/Youtube'
+
 export default {
     name: 'Artist',
+    components: { Calendar, Facebook, Instagram, Mixcloud, Soundcloud, Youtube },
+    head() {
+        return {
+            link: [
+                { rel: 'preconnect', href: 'https://firebasestorage.googleapis.com/' },
+                { rel: 'dns-prefetch', href: 'https://firebasestorage.googleapis.com/' }
+            ]
+        }
+    },
     data() {
         return {
             body: ''
@@ -69,7 +86,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 .artist-bg {
     background-image: url('https://firebasestorage.googleapis.com/v0/b/photofirebase-2982a.appspot.com/o/eu.jpeg?alt=media&token=37eb4708-fb72-4d38-a8b4-9f7dfe74c713');
     background-position: center;

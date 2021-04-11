@@ -110,11 +110,11 @@ html {
   background-color: #35495e;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Arimo:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
 
 body {
-  font-family: 'Arimo', sans-serif;
-  background-color: #1b1b1b;
+  font-family: 'Inter', sans-serif;
+  background-color: #1A1C1E;
   background-image: url('../static/img/logo.svg');
   background-repeat: no-repeat;
   background-position: center;
@@ -137,19 +137,30 @@ body {
 }
 
 .main-content {
-  background-color: rgba(27, 27, 27, .9);
+  background-color: rgba(26, 28, 30, .9);
   width: 100%;
   height: 100vh;
 }
 
 .visual {
-  background-image: url('../static/img/visuals/ezgif.com-gif-maker2020.2.webp');
+  background-image: url('../static/img/visuals/ezgif.com-gif-maker(2).webp');
   background-size: cover;
 }
 
 @media (min-width: 1400px) {
   .container {
     max-width: 1400px;
+  }
+}
+
+.dark-scroll {
+  &::-webkit-scrollbar {
+    width: 2px;
+    height: 2px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #6c757d;
   }
 }
 </style>

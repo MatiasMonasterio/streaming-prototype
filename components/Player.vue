@@ -1,8 +1,8 @@
 <template>
     <div class="w-100 fixed-bottom py-3 z-index" id="player" :class="{'d-none': loginPage}">
         <div class="container row mx-auto justify-content-start">
-            <button class="bg-dark border-0 rounded-circle p-2 text-secondary"
-            @click="playToggle">
+            <button class="bg-transparent player-button border-light p-1 rounded-circle text-light"
+            @click="playToggle" :disabled="load">
                 <svg xmlns="http://www.w3.org/2000/svg"
                 width="2rem"
                 height="2rem"
@@ -25,13 +25,14 @@
             </button>
 
             <div class="text-left mx-2 d-flex flex-column justify-content-center">
-                <NuxtLink to="/artists/black-monkey" class="text-decoration-none text-light">Black Monkeys</NuxtLink>
-                <small><NuxtLink to="/genres/techno" class="text-decoration-none text-secondary">Techno</NuxtLink></small>
+                <NuxtLink to="/artists/black-monkey" class="text-decoration-none fadeInUp animated d-none text-light" :class="{'d-block': play}">Black Monkeys</NuxtLink>
+                <small><NuxtLink to="/genres/techno" class="text-decoration-none fadeInUp animated d-none text-secondary" :class="{'d-block': play}">Techno</NuxtLink></small>
+                <small class="text-light font-weight-bold fadeInUp animated" :class="{'d-none': play}">On Air</small>
             </div>
         </div>
 
-        <audio src="/audio/test-audio.mp3" type="audio/mpeg" controls loop id="audio" preload="none"
-        @play="playerToggle" @pause="playerToggle" class="d-none">
+        <audio src="https://freeuk12.listen2myradio.com/live.mp3?typeportmount=s1_39193_stream_386328024" type="audio/mpeg" controls loop id="audio" preload="none"
+        @pause="playerToggle" class="d-none">
         </audio>
     </div>
 </template>
@@ -43,6 +44,7 @@ export default {
     data() {
         return {
             play: false,
+            load: false
         }
     },
     computed: {
@@ -58,8 +60,18 @@ export default {
             else bodyClass.remove('visual')
         },
         playToggle() {
-            if( audio.paused ) audio.play()
+            if( audio.paused ) this.playController()
             else audio.pause()
+        },
+        playController() {
+            this.load = true
+
+            audio.play()
+                .then(() => {
+                    this.load = false
+                    this.playerToggle()
+                })
+                .catch( err => console.log(err) )
         },
         baseAssets( filePath ) {
             const baseUrl = this.$router
@@ -69,3 +81,13 @@ export default {
     }
 }
 </script>
+
+<style lang="scss" scoped>
+.player-button {
+    transition: transform .2s;
+
+    &:hover {
+        transform: scale(1.04);
+    }
+}
+</style>
