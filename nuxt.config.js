@@ -29,7 +29,7 @@ export default {
   // Gloabl variables, mixin, function... 
   styleResources: {
     scss: [
-        // '~/assets/scss/variables.scss',
+        '~/assets/scss/animations.scss',
     ]
   },
 
